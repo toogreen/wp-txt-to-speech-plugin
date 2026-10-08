@@ -1,12 +1,13 @@
 .wptts-player {
 	box-sizing: border-box;
-	margin: 1.5em 0;
-	padding: 1em;
-	border: 1px solid #d0d7de;
-	border-radius: 8px;
-	background: #f6f8fa;
-	color: #24292f;
+	margin: 1.25em 0;
+	padding: 0.9em 1em;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+	color: #1e293b;
 	font: inherit;
+	box-shadow: 0 2px 8px rgb(15 23 42 / 5%);
 }
 
 .wptts-player *,
@@ -16,52 +17,120 @@
 }
 
 .wptts-player__heading {
-	margin-bottom: 0.75em;
-	font-weight: 700;
+	margin: 0 0 0.65em;
+	color: #334155;
+	font-size: 0.9em;
+	font-weight: 650;
+	letter-spacing: 0.01em;
 }
 
 .wptts-player__controls {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: end;
-	gap: 0.6em;
+	gap: 0.5em;
 }
 
 .wptts-button,
 .wptts-setting select {
-	min-height: 2.5em;
-	padding: 0.4em 0.75em;
-	border: 1px solid #8c959f;
-	border-radius: 4px;
+	min-height: 2.35em;
+	padding: 0.35em 0.7em;
+	border: 1px solid #cbd5e1;
+	border-radius: 7px;
 	background: #fff;
 	color: inherit;
 	font: inherit;
+	font-size: 0.88em;
+	line-height: 1.25;
+	transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
 
 .wptts-button {
 	cursor: pointer;
 }
 
+.wptts-button:not(:disabled):hover,
+.wptts-setting select:not(:disabled):hover {
+	border-color: #94a3b8;
+	background-color: #f8fafc;
+}
+
+.wptts-button--play {
+	border-color: #1d4ed8;
+	background: #2563eb;
+	color: #fff;
+	font-weight: 600;
+}
+
+.wptts-button--play:not(:disabled):hover {
+	border-color: #1e40af;
+	background: #1d4ed8;
+}
+
 .wptts-button:disabled,
 .wptts-setting select:disabled {
 	cursor: not-allowed;
-	opacity: 0.55;
+	opacity: 0.5;
 }
 
 .wptts-button:focus-visible,
 .wptts-setting select:focus-visible {
-	outline: 2px solid #0969da;
+	outline: 3px solid rgb(37 99 235 / 28%);
 	outline-offset: 2px;
 }
 
 .wptts-setting {
 	display: grid;
 	gap: 0.2em;
-	font-size: 0.875em;
+	color: #64748b;
+	font-size: 0.72em;
+	font-weight: 600;
+	letter-spacing: 0.035em;
+	text-transform: uppercase;
+}
+
+.wptts-setting select {
+	min-width: 7em;
+	color: #334155;
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.wptts-voice {
+	max-width: 15em;
 }
 
 .wptts-player__status {
-	min-height: 1.4em;
-	margin: 0.75em 0 0;
-	font-size: 0.875em;
+	min-height: 1.2em;
+	margin: 0.55em 0 0;
+	color: #64748b;
+	font-size: 0.78em;
+}
+
+@media (max-width: 480px) {
+	.wptts-player {
+		padding: 0.8em;
+	}
+
+	.wptts-player__controls {
+		gap: 0.45em;
+	}
+
+	.wptts-setting:first-of-type {
+		flex: 1 1 100%;
+	}
+
+	.wptts-voice {
+		max-width: none;
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wptts-button,
+	.wptts-setting select {
+		transition: none;
+	}
 }
