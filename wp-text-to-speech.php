@@ -59,7 +59,7 @@ add_action( 'wp_enqueue_scripts', 'wptts_enqueue_player_assets' );
  * @return string
  */
 function wptts_add_player_to_post_content( $content ) {
-	if ( is_admin() || is_feed() || ! is_singular( 'post' ) || ! in_the_loop() || ! is_main_query() ) {
+	if ( is_admin() || is_feed() || ! is_singular( 'post' ) || ! in_the_loop() || ! is_main_query() || post_password_required() ) {
 		return $content;
 	}
 
