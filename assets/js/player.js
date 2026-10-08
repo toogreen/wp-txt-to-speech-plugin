@@ -38,7 +38,7 @@
 			stop: 'Stop',
 			voice: 'Voice',
 			voiceLabel: 'Speech voice',
-			defaultVoice: 'Canadian French (default)',
+			defaultVoice: 'U.S. English (default)',
 			defaultVoiceSuffix: 'Default',
 			speed: 'Speed',
 			speedLabel: 'Speech speed',
@@ -83,7 +83,7 @@
 	var synthesis = window.speechSynthesis;
 	var speechSupported = Boolean(synthesis && 'SpeechSynthesisUtterance' in window);
 	var savedVoiceURI = getPreference(voiceKey);
-	var voicePreferenceSet = savedVoiceURI !== null;
+	var voicePreferenceSet = Boolean(savedVoiceURI);
 	var selectedVoiceURI = savedVoiceURI || '';
 
 	function applyLanguage(player) {
@@ -163,9 +163,10 @@
 
 			var preferredVoiceIndex = -1;
 			var selectedVoiceIndex = -1;
+			var preferredLocale = currentLanguage === 'en' ? 'en-us' : 'fr-ca';
 			voices.forEach(function (voice, index) {
 				var locale = voice.lang.toLowerCase().replace(/_/g, '-');
-				if (locale === 'fr-ca' && preferredVoiceIndex === -1) {
+				if (locale === preferredLocale && preferredVoiceIndex === -1) {
 					preferredVoiceIndex = index;
 				}
 				if (selectedVoiceURI && voice.voiceURI === selectedVoiceURI) {
@@ -206,13 +207,17 @@
 		languageSelect.addEventListener('change', function () {
 			currentLanguage = languageSelect.value === 'en' ? 'en' : 'fr';
 			setPreference(languageKey, currentLanguage);
+			voicePreferenceSet = false;
+			selectedVoiceURI = '';
+			setPreference(voiceKey, '');
+			populateVoices();
 			updateAllLanguages();
 		});
 
 		voiceSelect.addEventListener('change', function () {
 			var voices = speechSupported ? synthesis.getVoices() : [];
 			var voice = voiceSelect.value ? voices[Number(voiceSelect.value)] : null;
-			voicePreferenceSet = true;
+			voicePreferenceSet = Boolean(voice);
 			selectedVoiceURI = voice ? voice.voiceURI : '';
 			setPreference(voiceKey, selectedVoiceURI);
 		});
@@ -236,7 +241,7 @@
 			var utterance = new SpeechSynthesisUtterance(text);
 			var voices = synthesis.getVoices();
 			var selectedVoice = voiceSelect.value ? voices[Number(voiceSelect.value)] : null;
-			utterance.lang = selectedVoice ? selectedVoice.lang : 'fr-CA';
+			utterance.lang = selectedVoice ? selectedVoice.lang : (currentLanguage === 'en' ? 'en-US' : 'fr-CA');
 			utterance.rate = Number(player.querySelector('.wptts-rate').value) || 1;
 			if (selectedVoice) {
 				utterance.voice = selectedVoice;

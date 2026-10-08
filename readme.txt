@@ -11,7 +11,7 @@ Adds a player to individual blog posts so visitors can listen to the post conten
 
 == Description ==
 
-The player is appended to each single blog post and provides play, pause/resume, stop, voice, speech speed, and interface language controls. The interface is in French by default; visitors can switch it to English, and the choice is saved in their browser. Canadian French is the default speech language and the preferred voice when the visitor's browser provides one. Speech is generated in the visitor's browser using the Web Speech API; no audio files or external speech services are required.
+The player is appended to each single blog post and provides play, pause/resume, stop, voice, speech speed, and interface language controls. The interface is in French by default; visitors can switch it to English, and the choice is saved in their browser. Canadian French (`fr-CA`) is the default speech language and preferred voice in French; switching the interface to English changes the default speech language and preferred voice to U.S. English (`en-US`). These accents are used when available from the visitor's browser. Speech is generated in the visitor's browser using the Web Speech API; no audio files or external speech services are required.
 
 == Installation ==
 
