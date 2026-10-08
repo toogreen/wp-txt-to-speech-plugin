@@ -94,9 +94,14 @@
 		player.setAttribute('lang', language.lang);
 		player.setAttribute('aria-label', language.listen);
 		player.querySelector('.wptts-player__heading').textContent = language.listen;
-		player.querySelector('.wptts-button--play').textContent = language.play;
-		pauseButton.textContent = isPaused ? language.resume : language.pause;
-		player.querySelector('.wptts-button--stop').textContent = language.stop;
+		var playButton = player.querySelector('.wptts-button--play');
+		var stopButton = player.querySelector('.wptts-button--stop');
+		playButton.setAttribute('aria-label', language.play);
+		playButton.title = language.play;
+		pauseButton.setAttribute('aria-label', isPaused ? language.resume : language.pause);
+		pauseButton.title = isPaused ? language.resume : language.pause;
+		stopButton.setAttribute('aria-label', language.stop);
+		stopButton.title = language.stop;
 		player.querySelector('.wptts-voice-label').textContent = language.voice;
 		player.querySelector('.wptts-voice').setAttribute('aria-label', language.voiceLabel);
 		player.querySelector('.wptts-rate-label').textContent = language.speed;

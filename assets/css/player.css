@@ -46,7 +46,20 @@
 }
 
 .wptts-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.55em;
+	min-width: 2.55em;
+	padding: 0.35em;
 	cursor: pointer;
+}
+
+.wptts-button svg {
+	display: block;
+	width: 1.15em;
+	height: 1.15em;
+	fill: currentColor;
 }
 
 .wptts-button:not(:disabled):hover,

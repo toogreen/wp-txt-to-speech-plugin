@@ -77,9 +77,9 @@ function wptts_add_player_to_post_content( $content ) {
 	$player  = '<section class="wptts-player" lang="fr-CA" aria-label="Écouter cet article" data-text="' . esc_attr( $text ) . '">';
 	$player .= '<div class="wptts-player__heading">Écouter cet article</div>';
 	$player .= '<div class="wptts-player__controls">';
-	$player .= '<button class="wptts-button wptts-button--play" type="button">Lire</button>';
-	$player .= '<button class="wptts-button wptts-button--pause" type="button" disabled>Pause</button>';
-	$player .= '<button class="wptts-button wptts-button--stop" type="button" disabled>Arrêter</button>';
+	$player .= '<button class="wptts-button wptts-button--play" type="button" aria-label="Lire" title="Lire"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>';
+	$player .= '<button class="wptts-button wptts-button--pause" type="button" aria-label="Pause" title="Pause" disabled><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM15 5h4v14h-4z"/></svg></button>';
+	$player .= '<button class="wptts-button wptts-button--stop" type="button" aria-label="Arrêter" title="Arrêter" disabled><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></button>';
 	$player .= '<label class="wptts-setting"><span class="wptts-voice-label">Voix</span><select class="wptts-voice" aria-label="Voix de lecture"><option value="">Français canadien (par défaut)</option></select></label>';
 	$player .= '<label class="wptts-setting"><span class="wptts-rate-label">Vitesse</span><select class="wptts-rate" aria-label="Vitesse de lecture">';
 	$player .= '<option value="0.75">Lente</option><option value="1" selected>Normale</option><option value="1.25">Rapide</option>';
